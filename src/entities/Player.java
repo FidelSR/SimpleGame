@@ -53,6 +53,8 @@ public class Player extends Entity {
 
     public void update(){
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
+
+            //Updates direction
             if(keyH.upPressed){
                 direction  ="up";
                 y -= speed;
@@ -66,8 +68,10 @@ public class Player extends Entity {
                 direction = "right";
                 x += speed;
             }
+
+            //Updates animations
             spriteCounter++;
-            if(spriteCounter > 10){
+            if(spriteCounter > 6){
                 if(spriteNum == 1){
                     spriteNum = 2;
                 }else if(spriteNum == 2){
@@ -75,7 +79,10 @@ public class Player extends Entity {
                 }
                 spriteCounter = 0;
             }
-        }
+
+        }//else if(!keyH.upPressed || !keyH.downPressed || !keyH.leftPressed || !keyH.rightPressed){
+//            spriteNum= 0;
+//        }
     }
 
     public void draw(Graphics2D g2){
@@ -85,29 +92,37 @@ public class Player extends Entity {
             case "up":
                 if(spriteNum == 1){
                     image = up2;
-                }if(spriteNum == 2){
+                }else if(spriteNum == 2){
                     image = up3;
-                }else image = up1;
+                }else {
+                    image = up1;
+                }
                 break;
             case "down":
                 if(spriteNum == 1){
                     image = down2;
-                }if(spriteNum == 2){
+                }else if(spriteNum == 2){
                     image = down3;
-                }else image = down1;
+                }else {
+                    image = down1;
+                }
                 break;
             case "left":
                 if(spriteNum == 1){
-                    image = left1;
-                }if(spriteNum == 2){
                     image = left2;
+                }if(spriteNum == 2){
+                    image = left3;
+                } else {
+                    image = left1;
                 }
                 break;
             case "right":
                 if(spriteNum == 1){
-                    image = right1;
-                }if(spriteNum == 2){
                     image = right2;
+                }if(spriteNum == 2){
+                    image = right3;
+                }else {
+                    image = right1;
                 }
                 break;
             default:
