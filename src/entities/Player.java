@@ -13,7 +13,7 @@ import core.KeyHandler;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
-    boolean idle = true;
+    boolean idle = true; //variable used to check if player is idle
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -54,7 +54,7 @@ public class Player extends Entity {
 
     public void update(){
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
-            idle = false;
+            idle = false; //updates idle
             //Updates direction
             if(keyH.upPressed){
                 direction  ="up";
@@ -82,7 +82,7 @@ public class Player extends Entity {
             }
 
         }else {
-            idle = true;
+            idle = true; //updates idle
         }
     }
 
@@ -92,7 +92,7 @@ public class Player extends Entity {
         switch (direction) {
             case "up":
                 if(idle){
-                    image = up1;
+                    image = up1; //sets idle sprite if idle
                 }else {
                     if(spriteNum == 1){
                         image = up2;
