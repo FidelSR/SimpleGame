@@ -12,7 +12,8 @@ import core.KeyHandler;
 
 public class Player extends Entity {
     GamePanel gp;
-    KeyHandler keyH; 
+    KeyHandler keyH;
+    boolean idle = true;
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -53,7 +54,7 @@ public class Player extends Entity {
 
     public void update(){
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
-
+            idle = false;
             //Updates direction
             if(keyH.upPressed){
                 direction  ="up";
@@ -80,9 +81,9 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
 
-        }//else if(!keyH.upPressed || !keyH.downPressed || !keyH.leftPressed || !keyH.rightPressed){
-//            spriteNum= 0;
-//        }
+        }else {
+            idle = true;
+        }
     }
 
     public void draw(Graphics2D g2){
@@ -90,39 +91,47 @@ public class Player extends Entity {
         BufferedImage image = null;
         switch (direction) {
             case "up":
-                if(spriteNum == 1){
-                    image = up2;
-                }else if(spriteNum == 2){
-                    image = up3;
-                }else {
+                if(idle){
                     image = up1;
+                }else {
+                    if(spriteNum == 1){
+                        image = up2;
+                    }else if(spriteNum == 2){
+                        image = up3;
+                    }
                 }
                 break;
             case "down":
-                if(spriteNum == 1){
-                    image = down2;
-                }else if(spriteNum == 2){
-                    image = down3;
-                }else {
+                if (idle){
                     image = down1;
+                }else {
+                    if(spriteNum == 1){
+                        image = down2;
+                    }else if(spriteNum == 2){
+                        image = down3;
+                    }
                 }
                 break;
             case "left":
-                if(spriteNum == 1){
-                    image = left2;
-                }if(spriteNum == 2){
-                    image = left3;
-                } else {
+                if (idle){
                     image = left1;
+                }else {
+                    if(spriteNum == 1){
+                        image = left2;
+                    }if(spriteNum == 2){
+                        image = left3;
+                    }
                 }
                 break;
             case "right":
-                if(spriteNum == 1){
-                    image = right2;
-                }if(spriteNum == 2){
-                    image = right3;
-                }else {
+                if (idle){
                     image = right1;
+                }else {
+                    if(spriteNum == 1){
+                        image = right2;
+                    }if(spriteNum == 2){
+                        image = right3;
+                    }
                 }
                 break;
             default:
