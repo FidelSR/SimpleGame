@@ -19,9 +19,9 @@ public class Manager {
     public void getTileImage(){
         try {
             t[0] = new Tile();
-            t[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grassTile.png"));
+            t[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
             t[1] = new Tile();
-            t[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/stoneTile.png"));
+            t[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/stone.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
